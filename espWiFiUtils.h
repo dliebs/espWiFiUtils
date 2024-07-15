@@ -1,6 +1,14 @@
 //
-// espWiFiUtils v1.0.0
-// 2023.12.10
+//
+//  espWiFiUtils - Version 1.0.2
+//  This version was not deployed [2023.12.13]
+//
+//  ESP8266/32 Based
+//    Wrapper for WiFi, mDNS, and OTA
+//
+//  Changes From Previous Version
+//    Comments, cleanup
+//
 //
 
 #ifndef espWiFiUtils_h
@@ -21,8 +29,11 @@
   #include <ESPmDNS.h>
 #endif
 
+// Connect WiFi, no LED indication
 void connectWiFi(const char*, const char*, const char*);
+// Connect WiFi, LED indication
 void connectWiFi(const char*, const char*, const char*, int);
+// Initialize OTA with hostname and password
 void initializeOTA(const char*, const char*);
 
 #endif

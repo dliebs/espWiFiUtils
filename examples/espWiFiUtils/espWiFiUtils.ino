@@ -1,6 +1,14 @@
 //
-// espWiFiUtils v1.0.0
-// 2023.12.13
+//
+//  espWiFiUtils - Version 1.0.2
+//  This version was not deployed [2023.12.13]
+//
+//  ESP8266/32 Based
+//    Wrapper for WiFi, mDNS, and OTA
+//
+//  Changes From Previous Version
+//    Comments, cleanup
+//
 //
 
 /*----------  Libraries  ----------*/
@@ -24,14 +32,16 @@
 void setup() {
   Serial.begin(115200);
 
-  connectWiFi(STASSID, STAPSK, WiFiHostname);
+  // Can remove agument for LED if not desired
+  connectWiFi(STASSID, STAPSK, WiFiHostname, LED_BUILTIN);
+  // InitializeOTA, using STAPSK as password
   initializeOTA(WiFiHostname, STAPSK);
 }
 
 void loop() {
   Serial.println(WiFi.localIP());
 
-  // Arduino OTA
+  // Arduino OTA, run once per loop
   ArduinoOTA.handle();
 
   // Let the ESP8266 do its thing

@@ -1,10 +1,19 @@
 //
-// espWiFiUtils v1.0.0
-// 2023.12.13
+//
+//  espWiFiUtils - Version 1.0.2
+//  This version was not deployed [2023.12.13]
+//
+//  ESP8266/32 Based
+//    Wrapper for WiFi, mDNS, and OTA
+//
+//  Changes From Previous Version
+//    Comments, cleanup
+//
 //
 
 #include "espWiFiUtils.h"
 
+// Connect WiFi, no LED indication
 void connectWiFi(const char* STASSID, const char* STAPSK, const char* WiFiHostname) {
   WiFi.mode(WIFI_STA);
   WiFi.hostname(WiFiHostname);
@@ -19,6 +28,7 @@ void connectWiFi(const char* STASSID, const char* STAPSK, const char* WiFiHostna
   // Serial.println("WiFi Connected!");
 }
 
+// Connect WiFi, LED indication
 void connectWiFi(const char* STASSID, const char* STAPSK, const char* WiFiHostname, int wifiLED) {
   // Bring LED pin LOW to turn on
   pinMode(wifiLED, OUTPUT);
@@ -38,6 +48,7 @@ void connectWiFi(const char* STASSID, const char* STAPSK, const char* WiFiHostna
    digitalWrite(wifiLED, HIGH);
 }
 
+// Initialize OTA with hostname and password
 void initializeOTA(const char* hostname, const char* password) {
   //Initialize Arduino OTA
   ArduinoOTA.onStart([]() {
